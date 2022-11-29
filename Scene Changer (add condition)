@@ -1,0 +1,8 @@
+draw = function() {
+     if(currentScene===0){
+         drawScene1();
+     }
+     if(currentScene===1){
+         drawScene2();
+     }
+};
