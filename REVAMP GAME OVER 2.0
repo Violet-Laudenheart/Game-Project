@@ -1,0 +1,440 @@
+var currentScene=1;
+
+    var drawbitmoji = function(x,y,h)
+{
+
+
+var drawhead = function(x,y,h)
+{
+    
+//meerbott_bitmoji
+//neck
+fill(247, 228, 175);
+rect( x+71, y+139, 30, h+8);
+//head
+fill(247, 228, 175);
+ellipse(x+86,y+103,71,h+80); 
+};
+drawhead(x,y,h); 
+
+
+
+var draweyes = function(x,y,h)
+{
+//eyes 
+fill(255, 255, 255);
+ellipse(x+72,y+96,17,h+11);
+ellipse(x+99,y+96,17,h+11);
+fill(94, 60, 12);
+ellipse(x+72,y+96,8,h+7);
+ellipse(x+99,y+96,8,h+7);
+fill(0, 0, 0);
+strokeWeight(2.9);
+point(x+72,y+96);
+point(x+99,y+96);
+}; 
+draweyes(x,y,h); 
+
+var drawhair = function(x,y,h) 
+{
+//hair
+quad(x+64, y+64, x+52, y+72, x+46, y+95, x+57, y+84 );
+quad(x+109, y+76, x+111, y+68, x+121, y+76, x+124, y+98 );
+//brows
+line(x+108, y+87, x+89, y+87); 
+line(x+63, y+86, x+81, y+87); 
+}; 
+
+drawhair(x,y,h); 
+
+
+var drawface = function(x,y,h)
+{
+//nose
+fill(247, 228, 175);
+bezier(x+85, y+103, x+97, y+111, x+67, y+118, x+88, y+117);
+//mouth
+fill(252, 249, 249);
+arc(x+86,y+127,15,h+5,1,180);
+arc(x+85,y+127,15,h+5,-174,-11);
+};
+drawface(x,y,h);
+
+var drawhat = function(x,y,h)
+{
+//hat
+fill(21, 20, 79);
+arc(x+86,y+72,72,h+66, -184, 6); 
+textSize(25);
+fill(255, 0, 0);
+text("B", x+77, y+41); 
+fill(245, 196, 243);
+arc(x+86,y+78,78,h+20, -184, 6); 
+}; 
+drawhat(x,y,h);
+
+var drawhoodie = function(x,y,h)
+{
+//hoodie
+fill(81, 78, 105);
+arc(x+85, y+195, 112, h+100, -179,0);
+fill(28, 20, 77);
+rect(x+75, y+148, 25, h+43);
+//letters
+fill(247, 239, 239);
+text("KM",x+67,y+154);
+}; 
+
+drawhoodie(x,y,h);
+
+}; 
+
+var posX = 0;
+var posY = 0;
+var sizeFactor = 100;
+//bowl
+var drawBowl = function(posX, posY, sizeFactor)
+{
+    fill(70, 152, 204);//bowl color
+    arc(posX+sizeFactor/100*75, posY+sizeFactor/100*20, sizeFactor/100*50, sizeFactor/100*35, 0, 180);//bowl on head
+};
+//head
+
+var drawHead = function(posX, posY, sizeFactor)
+{
+    fill(255, 222, 161);//skintone color
+    rect(posX+sizeFactor/100*65,posY+sizeFactor/100*83,sizeFactor/100*20,sizeFactor/100*20);//neck
+    ellipse(posX+sizeFactor/100*47, posY+sizeFactor/100*58, sizeFactor/100*6, sizeFactor/100*17);//left ear
+    ellipse(posX+sizeFactor/100*103, posY+sizeFactor/100*58, sizeFactor/100*6, sizeFactor/100*17);//right ear
+    ellipse(posX+sizeFactor/100*75, posY+sizeFactor/100*58, sizeFactor/100*54, sizeFactor/100*66);//head
+};
+//face
+
+var drawFace = function(posX, posY, sizeFactor)
+{
+    arc(posX+sizeFactor/100*75, posY+sizeFactor/100*67, sizeFactor/100*14, sizeFactor/100*12, -49, 96);//nose
+    arc(posX+sizeFactor/100*75, posY+sizeFactor/100*79, sizeFactor/100*14, sizeFactor/100*5, 0, 180);//mouth
+    fill(255, 255, 255);//eye color
+    ellipse(posX+sizeFactor/100*63, posY+sizeFactor/100*58, sizeFactor/100*10, sizeFactor/100*3);//left eye
+    ellipse(posX+sizeFactor/100*87, posY+sizeFactor/100*58, sizeFactor/100*10, sizeFactor/100*8);//right eye
+    fill(0, 0, 0);//pupil color
+    ellipse(posX+sizeFactor/100*63, posY+sizeFactor/100*58, sizeFactor/100*4, sizeFactor/100*1);//left eye pupil
+    ellipse(posX+sizeFactor/100*87, posY+sizeFactor/100*58, sizeFactor/100*4, sizeFactor/100*4);//right eye pupil
+    fill(59, 39, 6);//hair color
+    quad(posX+sizeFactor/100*72,posY+sizeFactor/100*75,posX+sizeFactor/100*64,posY+sizeFactor/100*79,posX+sizeFactor/100*86,posY+sizeFactor/100*79,posX+sizeFactor/100*80,posY+sizeFactor/100*75);//mustache
+};
+//hair
+
+var drawHair = function(posX, posY, sizeFactor)
+{
+    fill(59, 39, 6);//hair color
+    ellipse(posX+sizeFactor/100*75, posY+sizeFactor/100*33, sizeFactor/100*46, sizeFactor/100*15);//hair
+    triangle(posX+sizeFactor/100*49, posY+sizeFactor/100*37, posX+sizeFactor/100*77, posY+sizeFactor/100*28, posX+sizeFactor/100*56, posY+sizeFactor/100*52);//hair
+    triangle(posX+sizeFactor/100*106, posY+sizeFactor/100*37, posX+sizeFactor/100*93, posY+sizeFactor/100*28, posX+sizeFactor/100*101, posY+sizeFactor/100*52);//hair
+    triangle(posX+sizeFactor/100*49, posY+sizeFactor/100*37, posX+sizeFactor/100*77, posY+sizeFactor/100*28, posX+sizeFactor/100*48, posY+sizeFactor/100*52);//hair
+};
+
+//shirt
+var drawShirt = function(posX, posY, sizeFactor)
+{
+    fill(16, 0, 163);//shirt color
+    quad(posX+sizeFactor/100*100,posY+sizeFactor/100*100,posX+sizeFactor/100*50,posY+sizeFactor/100*100,posX+sizeFactor/100*15,posY+sizeFactor/100*150,posX+sizeFactor/100*135,posY+sizeFactor/100*150);//body
+    fill(255, 0, 0);//initials color
+    textSize(sizeFactor/2.5);//initials size
+    text("GK", posX+sizeFactor/100*45, posY+sizeFactor/100*100);//initials
+};
+//Bitmoji Head
+var drawBitmojiHead = function(posX, posY, sizeFactor)
+{
+    drawBowl(posX, posY, sizeFactor);
+    drawHead(posX, posY, sizeFactor);
+    drawFace(posX, posY, sizeFactor);
+    drawHair(posX, posY, sizeFactor);
+};
+//Bitmoji Body
+var drawBitmojiBody = function(posX, posY, sizeFactor)
+{
+    drawShirt(posX, posY, sizeFactor);
+};
+//Bitmoji
+var drawBitmoji = function(posX, posY, sizeFactor)
+{
+    drawBitmojiHead(posX, posY, sizeFactor);
+    drawBitmojiBody(posX, posY, sizeFactor);
+};
+
+
+
+//button
+var Button = function(config) {
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 150;
+    this.height = config.height || 50;
+    this.label = config.label || "Click";
+};
+
+Button.prototype.draw = function() {
+    fill(0, 234, 255);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(19);
+    textAlign(LEFT, TOP);
+    text(this.label, this.x+10, this.y+this.height/4);
+};
+
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+
+
+var btn1 = new Button({
+    x: 130,
+    y: 300,
+    label: "Press to Start"
+});
+
+
+mouseClicked = function() {
+    if (btn1.isMouseInside()) {
+        currentScene=2;
+    }
+};
+
+var drawScene1 = function(){
+    background(255, 125, 125);
+    text("Gavin Kiernan", 43, 156);
+    text("Kai Meerbott", 250, 158);
+    text("This is our multiplayer Air Hockey game \r\ncreated using the ProcessingJS coding library \r\nin Khan Academy! First Player to reach 5 \r\npoints wins the game!!", 4, 191);
+    drawbitmoji(217,-45,1);
+    drawBitmoji(12,-22,114); 
+    btn1.draw();
+};
+
+
+var drawScene2 = function()
+{
+var player1Y = height/2;
+var player2Y = height/2;
+var player1Score = 0;
+var player2Score = 0;
+var ball;
+var gameStarted = false;
+var t = 0;
+
+//Constants
+var PAUSE_TIME = 60;
+var PLAYER_MOVE_SPEED = 25;
+var BALL_SPEED = 10;
+var PADDLE_HEIGHT = 50;
+var PADDLE_WIDTH = 50;
+
+angleMode = "degrees";
+
+var Ball = function(position, speed) {
+    this.position = position;
+    this.speed = speed || BALL_SPEED;
+    
+    this.radius = 12;
+    
+    this.resetVelocity = function() {
+        this.theta = random(-45,45);
+        this.velocity = new PVector(
+        this.speed*cos(this.theta), -this.speed*sin(this.theta));
+        player2Y = height/2;
+    };
+    this.resetVelocity();
+    
+    this.draw = function() {
+        fill(0, 255, 0);
+        noStroke();
+        ellipse(this.position.x, this.position.y,
+        this.radius*2, this.radius*2);
+    };
+    
+    this.collideWithPaddle = function(x, y) {
+        if (this.position.x - this.radius < x + PADDLE_WIDTH/2 &&
+        this.position.x + this.radius > x - PADDLE_WIDTH/2) {
+            if (dist(0, this.position.y, 0, y) <
+            PADDLE_HEIGHT/2 + this.radius) {
+                if (this.position.x > x) {
+                    this.position.x = x + 
+                    this.radius + PADDLE_WIDTH/2;
+                }
+                else if (this.position.x < x) {
+                    this.position.x = x - 
+                    this.radius - PADDLE_WIDTH/2;
+                }
+                this.velocity.mult(new PVector(-1, 1));
+            }
+        }
+    };
+    
+    this.update = function() {
+        //Handle wall collisions
+        if (this.position.x < 0) {
+            player2Score++;
+            this.position = new PVector(width/2, height/2);
+            gameStarted = false;
+            this.resetVelocity();
+        }
+        else if (this.position.x > width) {
+            player1Score++;
+            this.position = new PVector(width/2, height/2);
+            gameStarted = false;
+            this.resetVelocity();
+        }
+        if (this.position.y < 0) {
+            this.position.y = 0;
+            this.velocity.mult(new PVector(1, -1));
+        }
+        else if (this.position.y > height) {
+            this.position.y = height;
+            this.velocity.mult(new PVector(1, -1));
+        }
+        
+        //Handle paddle collisions
+        this.collideWithPaddle(20, player1Y);
+        this.collideWithPaddle(width-20, player2Y);
+        
+        this.position.add(this.velocity);
+    };
+};
+
+ball = new Ball(new PVector(width/2, height/2));
+
+var drawScores = function() {
+    var s;
+    
+    fill(255, 255, 255);
+    textSize(20);
+    
+    s = "Player 1: " + player1Score;
+    text(s, width*0.25-textWidth(s)/2, 25);
+    s = "Player 2: " + player2Score;
+    text(s, width*0.75-textWidth(s)/2, 25);
+};
+
+var updatePlayer2 = function() {
+player2Y = mouseY;
+    
+};
+
+//Move the player up
+var movePlayerUp = function() {
+    player1Y -= PLAYER_MOVE_SPEED;
+};
+
+//Move the player down
+var movePlayerDown = function() {
+    player1Y += PLAYER_MOVE_SPEED;
+};
+
+var drawPlayers = function() {
+    //Constrain the player movement
+    player1Y = constrain(player1Y, 0, 400);
+    
+    rectMode(CENTER);
+    fill(255, 145, 0);
+    ellipse(20, player1Y, PADDLE_WIDTH, PADDLE_HEIGHT);
+    fill(255, 0, 0);
+    ellipse(width-20, player2Y, PADDLE_WIDTH, PADDLE_HEIGHT);
+};
+
+draw = function() {
+    //Control Player 1
+    if (keyIsPressed) {
+        if (keyCode === UP){
+            movePlayerUp(); 
+        }
+        else if (keyCode === DOWN) {
+            movePlayerDown();
+        }
+    }
+
+
+    //Draw the environment
+    background(0, 0, 255);
+    fill(255, 0, 255);
+    ellipse(200, 200, 100, 100);
+    fill(0, 0, 255);
+    ellipse(200, 200, 90, 90);
+    fill(255, 0, 255);
+    rect(200, 200, 5, 400);
+    fill(0, 0, 0);
+        for(var i = 0; i < 10; i++)
+    {
+        for(var j = 0; j < 10; j++)
+        {
+            ellipse(20+i*40, 20+j*40, 2, 2);
+        }
+    }
+    updatePlayer2();
+    drawPlayers();
+    drawScores();
+    stroke(0, 2255, 255);
+  
+      
+  
+
+
+
+    
+    //Draw the ball
+    ball.draw();
+    
+    if (!gameStarted) {
+        t++;
+        if (t >= PAUSE_TIME) {
+            t = 0;
+            gameStarted = true;
+        }
+        return;
+    }
+    
+    ball.update();
+};
+};
+
+var drawScene3 = function()
+{
+    background(255, 145, 0);
+    textSize(25);
+    fill(0, 0, 0);
+text("GAME OVER",116,103); 
+textSize(45); 
+text("PLAYER " + "1"+ " WINS!!", 19,200); 
+};
+
+var drawScene4 = function()
+{
+    background(255, 0, 0);
+    textSize(25);
+    fill(0, 0, 0);
+text("GAME OVER",116,103); 
+textSize(45); 
+text("PLAYER " + "2"+ " WINS!!", 19,200); 
+};
+
+draw = function()
+{
+    if (currentScene===1)
+    {
+        drawScene1();
+    }
+        if (currentScene===2)
+    {
+        drawScene2();
+    }
+            if (currentScene===3)
+    {
+        drawScene3();
+    }
+             if (currentScene===4)
+    {
+        drawScene4();
+    }
+};  
